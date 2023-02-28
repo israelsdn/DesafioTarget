@@ -27,4 +27,3 @@ function QuestionTwo(){
         fiboArray.find(num => num == x) ? alert("Está Presente na Sequência de Fibonacci") : alert(" Não Está Presente na Sequência de Fibonacci")
     }
 }
-
