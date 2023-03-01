@@ -19,11 +19,12 @@ const fibonacci = (valor) => {
 function QuestionTwo(){
     let x = document.getElementById('QuestionTwo').value
     let fiboArray = [...fibonacci(x)]
+    const element = document.getElementById('responseTwo')
     
     if(x <= 5){
         let fibTempArray = [...fibonacci(10)]
-        fibTempArray.find(num => num == x) ? alert("Está Presente na Sequência de Fibonacci") : alert(" Não Está Presente na Sequência de Fibonacci")
+        fibTempArray.find(num => num == x) ? element.innerHTML = "Está Presente na Sequência de Fibonacci" : element.innerHTML = " Não Está Presente na Sequência de Fibonacci"
     } else {
-        fiboArray.find(num => num == x) ? alert("Está Presente na Sequência de Fibonacci") : alert(" Não Está Presente na Sequência de Fibonacci")
+        fiboArray.find(num => num == x) ? element.innerHTML = "Está Presente na Sequência de Fibonacci" : element.innerHTML = "Não Está Presente na Sequência de Fibonacci"
     }
 }
