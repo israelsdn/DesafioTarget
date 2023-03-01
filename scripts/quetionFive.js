@@ -1,5 +1,6 @@
 function QuestionFive(){
     let word = document.getElementById('QuestionFive').value
+    const element = document.getElementById('responseFive')
     let wordArray = word.split('')
     let contador = wordArray.length
     let respArray = []
@@ -8,6 +9,5 @@ function QuestionFive(){
         respArray.push(wordArray[i])
     }
 
-    const element = document.getElementById('responseFive')
     element.innerHTML = respArray.join("")
 }
