@@ -1,16 +1,145 @@
+var dadosJson = [
+	{
+		"dia": 1,
+		"valor": 22174.1664
+	},
+	{
+		"dia": 2,
+		"valor": 24537.6698
+	},
+	{
+		"dia": 3,
+		"valor": 26139.6134
+	},
+	{
+		"dia": 4,
+		"valor": 0.0
+	},
+	{
+		"dia": 5,
+		"valor": 0.0
+	},
+	{
+		"dia": 6,
+		"valor": 26742.6612
+	},
+	{
+		"dia": 7,
+		"valor": 0.0
+	},
+	{
+		"dia": 8,
+		"valor": 42889.2258
+	},
+	{
+		"dia": 9,
+		"valor": 46251.174
+	},
+	{
+		"dia": 10,
+		"valor": 11191.4722
+	},
+	{
+		"dia": 11,
+		"valor": 0.0
+	},
+	{
+		"dia": 12,
+		"valor": 0.0
+	},
+	{
+		"dia": 13,
+		"valor": 3847.4823
+	},
+	{
+		"dia": 14,
+		"valor": 373.7838
+	},
+	{
+		"dia": 15,
+		"valor": 2659.7563
+	},
+	{
+		"dia": 16,
+		"valor": 48924.2448
+	},
+	{
+		"dia": 17,
+		"valor": 18419.2614
+	},
+	{
+		"dia": 18,
+		"valor": 0.0
+	},
+	{
+		"dia": 19,
+		"valor": 0.0
+	},
+	{
+		"dia": 20,
+		"valor": 35240.1826
+	},
+	{
+		"dia": 21,
+		"valor": 43829.1667
+	},
+	{
+		"dia": 22,
+		"valor": 18235.6852
+	},
+	{
+		"dia": 23,
+		"valor": 4355.0662
+	},
+	{
+		"dia": 24,
+		"valor": 13327.1025
+	},
+	{
+		"dia": 25,
+		"valor": 0.0
+	},
+	{
+		"dia": 26,
+		"valor": 0.0
+	},
+	{
+		"dia": 27,
+		"valor": 25681.8318
+	},
+	{
+		"dia": 28,
+		"valor": 1718.1221
+	},
+	{
+		"dia": 29,
+		"valor": 13220.495
+	},
+	{
+		"dia": 30,
+		"valor": 8414.61
+	}
+]
+
 function QuestionThree(){
-    const distribuidoras = [["SP", 67836.43], ["RJ", 36678.66], ["MG", 29229.88], ["ES", 27165.48], ["OUTROS", 19849.53]]
-    const element = document.getElementById('responseThree')
-    element.innerHTML = ""
-    var valorTotal = 0
-    let porcentagem
+    const elementMedia = document.getElementById('responseFourMedia')
+    const elementMaior = document.getElementById('responseFourMaior')
+    const elementMenor = document.getElementById('responseFourMenor')
+    elementMedia.innerHTML = ""
+    elementMaior.innerHTML = ""
+    elementMenor.innerHTML = ""
 
-    for (i in distribuidoras) {
-        valorTotal += distribuidoras[i][1]
-    }
+    let soma = dadosJson.reduce((total, objeto) => total + objeto.valor, 0);
+    let media = soma / dadosJson.length;
+    
+    let menorValor = dadosJson.filter(objeto => objeto.valor !== 0)
+    .reduce((menor, atual) => atual.valor < menor.valor ? atual : menor);
 
-    for (i in distribuidoras) {
-        porcentagem = (distribuidoras[i][1] / valorTotal) * 100
-        element.innerHTML += "<div>"+distribuidoras[i][0]+":"+ porcentagem.toFixed(2)+"%</div>"
-    }
+    let maiorValor = dadosJson.filter(objeto => objeto.valor !== 0)
+    .reduce((maior, atual) => atual.valor > maior.valor ? atual : maior);
+
+    
+    elementMedia.innerHTML = "<b>Media dos valores mensais:</b><br>" + media.toFixed(2)
+    elementMaior.innerHTML = "<b>Maior valor:</b><br>Dia "+maiorValor.dia+": "+maiorValor.valor.toFixed(2)
+    elementMenor.innerHTML = "<b>Menor valor:</b><br>Dia "+menorValor.dia+": "+menorValor.valor.toFixed(2)
 }
